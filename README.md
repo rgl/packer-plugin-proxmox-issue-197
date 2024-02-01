@@ -1,3 +1,5 @@
+**NB** This was worked around by setting `iso_storage_pool` as described at https://github.com/hashicorp/packer-plugin-proxmox/issues/197#issuecomment-1769046448.
+
 This is repo contains a packer template that reproduces the `501 for data too large` error while uploading a iso file with `additional_iso_files`.
 
 See https://github.com/hashicorp/packer-plugin-proxmox/issues/197

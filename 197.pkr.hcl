@@ -45,14 +45,12 @@ source "proxmox-iso" "issue-197" {
   iso_url          = var.iso_url
   iso_checksum     = var.iso_checksum
   unmount_iso      = true
-  // XXX it fails to upload the file with the error:
-  //       501 for data too large
-  // see https://github.com/hashicorp/packer-plugin-proxmox/issues/197
   additional_iso_files {
-    device       = "ide0"
-    iso_url      = var.iso_url
-    unmount      = true
-    iso_checksum = "none"
+    device           = "ide0"
+    iso_storage_pool = "local" # NB without this, packer build fails as described at https://github.com/hashicorp/packer-plugin-proxmox/issues/197.
+    iso_url          = var.iso_url
+    iso_checksum     = "none"
+    unmount          = true
   }
   os           = "l26"
   ssh_username = "vagrant"
